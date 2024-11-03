@@ -257,6 +257,27 @@ export default function Form() {
                         textFieldStyle={textFieldStyle}
                     />
 
+                    
+
+                    <Button
+                        variant='contained'
+                        disableElevation
+                        fullWidth
+                        startIcon={<MailIcon />}
+                        style={{
+                            backgroundColor: '#152438',
+                            color: '#FFFFFF',
+                            textTransform: 'none',
+                            height: '60px',
+                            marginTop: '20px',
+                            borderRadius: '10px',
+                            fontSize: '18px',
+                        }}
+                        onClick={handleSubmit}
+                    >
+                        Continue with email
+                    </Button>
+
                     {/* Acordeón para mostrar términos de oferta */}
                     <Accordion
                         sx={{
@@ -282,7 +303,7 @@ export default function Form() {
                                 },
                             }}
                         >
-                            <Typography sx={{ color: '#2B3649' }}>
+                            <Typography sx={{ color: '#2B3649' } }>
                                 By signing up, I agree to the{' '}
                                 <span style={{ color: '#00BFA5' }}>
                                     Offer Terms
@@ -303,7 +324,7 @@ export default function Form() {
                                     color: '#2B3649',
                                     fontSize: '0.875rem',
                                     fontFamily:
-                                        '"Helvetica Neue", Helvetica, Arial, sans-serif', // Fuente personalizada
+                                        '"Times new roman", Helvetica, Arial, sans-serif', // Fuente personalizada
                                 }}
                             >
                                 I agree to the{' '}
@@ -340,25 +361,6 @@ export default function Form() {
                             </Typography>
                         </AccordionDetails>
                     </Accordion>
-
-                    <Button
-                        variant='contained'
-                        disableElevation
-                        fullWidth
-                        startIcon={<MailIcon />}
-                        style={{
-                            backgroundColor: '#152438',
-                            color: '#FFFFFF',
-                            textTransform: 'none',
-                            height: '60px',
-                            marginTop: '20px',
-                            borderRadius: '10px',
-                            fontSize: '18px',
-                        }}
-                        onClick={handleSubmit}
-                    >
-                        Continue with email
-                    </Button>
                 </div>
             </div>
         </div>
