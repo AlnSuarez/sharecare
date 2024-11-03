@@ -72,9 +72,7 @@ export function Address({ value, setAddress, errors, setErrors, textFieldStyle, 
                     fullWidth
                     error={errors.address}
                     onBlur={handleBlur}
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
+                   
                     sx={{
                         ...textFieldStyle('address'),
                         '& .MuiInputBase-root': {
@@ -84,6 +82,7 @@ export function Address({ value, setAddress, errors, setErrors, textFieldStyle, 
                         '& .MuiAutocomplete-inputRoot': {
                             paddingTop: '20px',
                             paddingLeft: '20px',
+                            
                         },
                     }}
                     InputProps={{

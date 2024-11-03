@@ -53,9 +53,7 @@ export function Mobile({ mobile, setMobile, errors, setErrors, textFieldStyle })
             onBlur={handleBlur}
             onChange={handleChange}
             value={mobile}
-            InputLabelProps={{
-                shrink: true,
-            }}
+            
             sx={textFieldStyle('mobile')}
             InputProps={{
                 endAdornment: (

@@ -48,9 +48,7 @@ export function Fullname(props) {
             onBlur={handleBlur}
             onChange={handleChange}
             value={props.value || ''} 
-            InputLabelProps={{
-                shrink: true,
-            }}
+            
             sx={props.textFieldStyle('fullName')}
             InputProps={{
                 endAdornment: (

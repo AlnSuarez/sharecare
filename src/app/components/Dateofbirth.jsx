@@ -58,9 +58,7 @@ export function Dateofbirth(props) {
             onBlur={handleBlur}
             onChange={handleChange}
             value={props.dob}
-            InputLabelProps={{
-                shrink: true,
-            }}
+            
             sx={props.textFieldStyle('dob')}
             InputProps={{
                 endAdornment: (

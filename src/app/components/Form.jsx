@@ -105,7 +105,7 @@ export default function Form() {
         backgroundColor: errors[field] ? '#FEF2F2' : '#FFFFFF',
         paddingTop: '0px',
         '& .MuiInputLabel-root': {
-            marginTop: '20px',
+            marginTop: '10px',
             color: errors[field] ? '#ff0000' : '#000000',
             paddingTop: '0px',
             paddingLeft: '20px',
@@ -132,7 +132,7 @@ export default function Form() {
             color: '#00BFA5',
         },
         '& .MuiInputBase-root': {
-            paddingTop: '10px',
+            paddingTop: '0px',
         },
     });
 
