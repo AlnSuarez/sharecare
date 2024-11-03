@@ -1,11 +1,51 @@
-.register-flex{
+body {
+    background-color: #f4f6f8;
+}
+
+.register-flex {
     display: flex;
     height: 100vh;
     width: 100%;
 }
 
-.register-image{
+.register-image {
     width: 50%;
     padding: 20px;
-    background-color: #F4F6F8;
+    background-color: #f4f6f8;
+}
+
+.register-header-mobile {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .register-flex {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 100%;
+    }
+
+    .register-image {
+        width: 100%;
+        height: 320px;
+        padding: 20px;
+        background-color: #f4f6f8;
+        object-fit: cover; 
+        object-position: top;
+    }
+
+    /* Estilos específicos para pantallas de hasta 900px de ancho */
+    .register-header-mobile {
+        margin-top: 20px;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+    .register-header-mobile img {
+        width: 150px;
+        height: 30px;
+    }
 }

@@ -6,11 +6,9 @@ export function Mail({ value, setEmail, errors, setErrors, textFieldStyle, handl
 
     const validateEmail = (email) => {
         // Expresión regular mejorada para validar correos electrónicos
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/;
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         return emailRegex.test(email);
     };
-    
-
 
     const handleBlur = () => {
         if (!value || !value.trim()) {
@@ -39,10 +37,18 @@ export function Mail({ value, setEmail, errors, setErrors, textFieldStyle, handl
         setEmail(emailValue);
         handleInputChange('email')({ target: { value: emailValue } });
 
-        if (errors.email && validateEmail(emailValue.trim())) {
+        // Validar en tiempo real y actualizar los errores si es necesario
+        if (validateEmail(emailValue.trim())) {
+            setErrorText('');
             setErrors((prevErrors) => ({
                 ...prevErrors,
                 email: false,
+            }));
+        } else if (emailValue.trim() !== '') {
+            setErrorText('Invalid Mail');
+            setErrors((prevErrors) => ({
+                ...prevErrors,
+                email: true,
             }));
         }
     };

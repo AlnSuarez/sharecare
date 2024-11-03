@@ -33,12 +33,12 @@ export default function Form() {
         address: false,
         mobile: false,
         dob: false,
-        email: false, 
+        email: false,
     });
     const [mobile, setMobile] = useState('');
     const [dob, setDob] = useState('');
     const [dobError, setDobError] = useState('');
-    const [email, setEmail] = useState(''); 
+    const [email, setEmail] = useState('');
 
     const handleInputChange = (field) => (event) => {
         handleInputChangeHelper(field, event, setFullName, errors, setErrors);
@@ -49,6 +49,30 @@ export default function Form() {
     };
 
     const handleSubmit = async () => {
+        const validateEmail = (email) => {
+            // Expresión regular mejorada para validar correos electrónicos
+            const emailRegex =
+                /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            return emailRegex.test(email);
+        };
+
+        const newErrors = {
+            fullName: !fullName.trim(),
+            address: !address.trim(),
+            mobile: !mobile.trim(),
+            dob: !dob.trim(),
+            email: !email.trim() || !validateEmail(email.trim()), // Verifica si el correo es válido
+        };
+
+        setErrors(newErrors);
+
+        // Verificar si hay algún error antes de continuar
+        const hasErrors = Object.values(newErrors).some((error) => error);
+        if (hasErrors) {
+            console.error('Hay campos obligatorios que necesitan atención.');
+            return; // Detener la ejecución si hay errores
+        }
+
         const formData = {
             fullName,
             address,
@@ -115,7 +139,10 @@ export default function Form() {
     return (
         <div className='register-form'>
             <div className='register-header'>
-                <img src='https://storage.googleapis.com/cdn.healthtrak.com/app/sha-4448f12/public/img/sharecare/logo.svg' alt="Sharecare Logo" />
+                <img
+                    src='https://storage.googleapis.com/cdn.healthtrak.com/app/sha-4448f12/public/img/sharecare/logo.svg'
+                    alt='Sharecare Logo'
+                />
                 <Button
                     variant='outlined'
                     sx={{
@@ -214,9 +241,9 @@ export default function Form() {
                                     },
                                 }}
                             >
-                                <MenuItem value="Male">Male</MenuItem>
-                                <MenuItem value="Female">Female</MenuItem>
-                                <MenuItem value="Other">Other</MenuItem>
+                                <MenuItem value='Male'>Male</MenuItem>
+                                <MenuItem value='Female'>Female</MenuItem>
+                                <MenuItem value='Other'>Other</MenuItem>
                             </Select>
                         </FormControl>
                     </Card>
@@ -242,9 +269,11 @@ export default function Form() {
                         }}
                     >
                         <AccordionSummary
-                            expandIcon={<ExpandMoreIcon sx={{ color: '#00BFA5' }} />}
-                            aria-controls="panel1a-content"
-                            id="panel1a-header"
+                            expandIcon={
+                                <ExpandMoreIcon sx={{ color: '#00BFA5' }} />
+                            }
+                            aria-controls='panel1a-content'
+                            id='panel1a-header'
                             sx={{
                                 padding: '0px',
                                 minHeight: 'unset',
@@ -253,13 +282,61 @@ export default function Form() {
                                 },
                             }}
                         >
-                            <Typography sx={{ color: '#00BFA5', fontWeight: 'bold' }}>
-                                By signing up, I agree to the Offer Terms
+                            <Typography sx={{ color: '#2B3649' }}>
+                                By signing up, I agree to the{' '}
+                                <span style={{ color: '#00BFA5' }}>
+                                    Offer Terms
+                                </span>
                             </Typography>
                         </AccordionSummary>
-                        <AccordionDetails sx={{ padding: '0px', marginTop: '10px' }}>
-                            <Typography sx={{ color: '#2B3649', fontSize: '0.875rem' }}>
-                                I agree to the Offer Terms and understand I am creating a Sharecare consumer account. I agree to the Sharecare Privacy Policy, Terms, Consumer Health Data Privacy Policy, and, if applicable to me, the Privacy Notice for California Residents. I consent to Sharecare’s collecting and sharing of any health information I may provide, for the purposes listed in the Consumer Health Data Privacy Policy and Privacy Policy. I agree to receive emails, offers, alerts, and other notices. I understand that I can opt-out of marketing communications at any time.
+                        <AccordionDetails
+                            sx={{
+                                padding: '0px',
+                                marginTop: '10px',
+                                textAlign: 'center', // Centrar el texto
+                                fontFamily:
+                                    '"Helvetica Neue", Helvetica, Arial, sans-serif', // Fuente personalizada
+                            }}
+                        >
+                            <Typography
+                                sx={{
+                                    color: '#2B3649',
+                                    fontSize: '0.875rem',
+                                    fontFamily:
+                                        '"Helvetica Neue", Helvetica, Arial, sans-serif', // Fuente personalizada
+                                }}
+                            >
+                                I agree to the{' '}
+                                <span style={{ color: '#00BFA5' }}>
+                                    Offer Terms
+                                </span>{' '}
+                                and understand I am creating a Sharecare
+                                consumer account. I agree to the{' '}
+                                <span style={{ color: '#00BFA5' }}>
+                                    Sharecare Privacy Policy
+                                </span>
+                                ,{' '}
+                                <span style={{ color: '#00BFA5' }}>Terms</span>,{' '}
+                                <span style={{ color: '#00BFA5' }}>
+                                    Consumer Health Data Privacy Policy
+                                </span>
+                                , and, if applicable to me, the{' '}
+                                <span style={{ color: '#00BFA5' }}>
+                                    Privacy Notice for California Residents
+                                </span>
+                                . I consent to Sharecare’s collecting and
+                                sharing of any health information I may provide,
+                                for the purposes listed in the{' '}
+                                <span style={{ color: '#00BFA5' }}>
+                                    Consumer Health Data Privacy Policy
+                                </span>{' '}
+                                and{' '}
+                                <span style={{ color: '#00BFA5' }}>
+                                    Privacy Policy
+                                </span>
+                                . I agree to receive emails, offers, alerts, and
+                                other notices. I understand that I can opt-out
+                                of marketing communications at any time.
                             </Typography>
                         </AccordionDetails>
                     </Accordion>
@@ -278,7 +355,7 @@ export default function Form() {
                             borderRadius: '10px',
                             fontSize: '18px',
                         }}
-                        onClick={handleSubmit} 
+                        onClick={handleSubmit}
                     >
                         Continue with email
                     </Button>
